@@ -11,43 +11,43 @@ if ($args.Length -eq 1) {
   $Version = $args.Get(0)
 }
 
-$DenoInstall = $env:DENO_INSTALL
-$BinDir = if ($DenoInstall) {
-  "$DenoInstall\bin"
+$OdenInstall = $env:ODEN_INSTALL
+$BinDir = if ($OdenInstall) {
+  "$OdenInstall\bin"
 } else {
-  "$Home\.deno\bin"
+  "$Home\.oden\bin"
 }
 
-$DenoZip = "$BinDir\deno.zip"
-$DenoExe = "$BinDir\deno.exe"
+$OdenZip = "$BinDir\oden.zip"
+$OdenExe = "$BinDir\oden.exe"
 $Target = 'x86_64-pc-windows-msvc'
 
 # GitHub requires TLS 1.2
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
-$DenoUri = if (!$Version) {
-  "https://github.com/denoland/deno/releases/latest/download/deno-${Target}.zip"
+$OdenUri = if (!$Version) {
+  "https://github.com/dalscript/oden/releases/latest/download/oden-${Target}.zip"
 } else {
-  "https://github.com/denoland/deno/releases/download/${Version}/deno-${Target}.zip"
+  "https://github.com/dalscript/oden/releases/download/${Version}/oden-${Target}.zip"
 }
 
 if (!(Test-Path $BinDir)) {
   New-Item $BinDir -ItemType Directory | Out-Null
 }
 
-Invoke-WebRequest $DenoUri -OutFile $DenoZip -UseBasicParsing
+Invoke-WebRequest $OdenUri -OutFile $OdenZip -UseBasicParsing
 
 if (Get-Command Expand-Archive -ErrorAction SilentlyContinue) {
-  Expand-Archive $DenoZip -Destination $BinDir -Force
+  Expand-Archive $OdenZip -Destination $BinDir -Force
 } else {
-  if (Test-Path $DenoExe) {
-    Remove-Item $DenoExe
+  if (Test-Path $OdenExe) {
+    Remove-Item $OdenExe
   }
   Add-Type -AssemblyName System.IO.Compression.FileSystem
-  [IO.Compression.ZipFile]::ExtractToDirectory($DenoZip, $BinDir)
+  [IO.Compression.ZipFile]::ExtractToDirectory($OdenZip, $BinDir)
 }
 
-Remove-Item $DenoZip
+Remove-Item $OdenZip
 
 $User = [EnvironmentVariableTarget]::User
 $Path = [Environment]::GetEnvironmentVariable('Path', $User)
@@ -56,5 +56,5 @@ if (!(";$Path;".ToLower() -like "*;$BinDir;*".ToLower())) {
   $Env:Path += ";$BinDir"
 }
 
-Write-Output "Deno was installed successfully to $DenoExe"
-Write-Output "Run 'deno --help' to get started"
+Write-Output "Oden was installed successfully to $OdenExe"
+Write-Output "Run 'oden --help' to get started"
