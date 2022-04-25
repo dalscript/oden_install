@@ -20,9 +20,9 @@ else
 fi
 
 if [ $# -eq 0 ]; then
-	oden_uri="https://github.com/dalscript/oden/releases/latest/download/oden-${target}.zip"
+	oden_uri="https://github.com/dalscript/oden-alphas/releases/latest/download/oden-${target}.zip"
 else
-	oden_uri="https://github.com/dalscript/oden/releases/download/${1}/oden-${target}.zip"
+	oden_uri="https://github.com/dalscript/oden-alphas/releases/download/${1}/oden-${target}.zip"
 fi
 
 oden_install="${ODEN_INSTALL:-$HOME/.oden}"
