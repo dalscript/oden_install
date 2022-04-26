@@ -5,7 +5,7 @@
 set -e
 
 if ! command -v unzip >/dev/null; then
-	echo "Error: unzip is required to install Oden (see: https://github.com/dalscript/oden_install#unzip-is-required)." 1>&2
+	echo "Error: unzip is required to install Oden (see: https://github.com/odenlang/oden_install#unzip-is-required)." 1>&2
 	exit 1
 fi
 
@@ -20,9 +20,9 @@ else
 fi
 
 if [ $# -eq 0 ]; then
-	oden_uri="https://github.com/dalscript/oden-alphas/releases/latest/download/oden-${target}.zip"
+	oden_uri="https://github.com/odenlang/oden-alphas/releases/latest/download/oden-${target}.zip"
 else
-	oden_uri="https://github.com/dalscript/oden-alphas/releases/download/${1}/oden-${target}.zip"
+	oden_uri="https://github.com/odenlang/oden-alphas/releases/download/${1}/oden-${target}.zip"
 fi
 
 oden_install="${ODEN_INSTALL:-$HOME/.oden}"

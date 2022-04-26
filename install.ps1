@@ -26,9 +26,9 @@ $Target = 'x86_64-pc-windows-msvc'
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 
 $OdenUri = if (!$Version) {
-  "https://github.com/dalscript/oden-alphas/releases/latest/download/oden-${Target}.zip"
+  "https://github.com/odenlang/oden-alphas/releases/latest/download/oden-${Target}.zip"
 } else {
-  "https://github.com/dalscript/oden-alphas/releases/download/${Version}/oden-${Target}.zip"
+  "https://github.com/odenlang/oden-alphas/releases/download/${Version}/oden-${Target}.zip"
 }
 
 if (!(Test-Path $BinDir)) {
