@@ -2,7 +2,7 @@
 
 **One-line commands to install Oden on your system.**
 
-[![Build Status](https://github.com/dalscript/oden_install/workflows/ci/badge.svg?branch=master)](https://github.com/dalscript/oden_install/actions)
+[![Build Status](https://github.com/odenlang/oden_install/workflows/ci/badge.svg?branch=master)](https://github.com/odenlang/oden_install/actions)
 
 ## Install Latest Version
 
@@ -64,7 +64,7 @@ The program [`unzip`](https://linux.die.net/man/1/unzip) is a requirement for th
 
 ```sh
 $ curl -fsSL https://oden.dallin.pro/install.sh | sh
-Error: unzip is required to install Oden (see: https://github.com/dalscript/oden_install#unzip-is-required).
+Error: unzip is required to install Oden (see: https://github.com/odenlang/oden_install#unzip-is-required).
 ```
 
 **When does this issue occur?**
